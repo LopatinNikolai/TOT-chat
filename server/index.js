@@ -1,6 +1,6 @@
 const { Client } = require("pg");
 var bodyParser = require("body-parser");
-const path = require('path');
+const path = require("path");
 
 const express = require("express");
 
@@ -25,18 +25,16 @@ connection.on("connection", (ws) => {
   });
 });
 
-const staticFilesUrl = path.join(__dirname, '../build');
-console.log()
+const staticFilesUrl = path.join(__dirname, "../build");
 
-app.listen(8002);
+app.listen(Number(process.env.PORT)|| 8002);
 
 app.use(bodyParser.json());
-app.use(express.static(staticFilesUrl))
+app.use(express.static(staticFilesUrl));
 
-
-app.get("*", function(req, res) {
-  res.sendfile(path.join(staticFilesUrl, 'index.html'));
-})
+app.get("*", function (req, res) {
+  res.sendfile(path.join(staticFilesUrl, "index.html"));
+});
 
 app.post("/api/register", registerHandler);
 

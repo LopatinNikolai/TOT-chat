@@ -32,10 +32,6 @@ app.listen(Number(process.env.PORT)|| 8002);
 app.use(bodyParser.json());
 app.use(express.static(staticFilesUrl));
 
-app.get("*", function (req, res) {
-  res.sendfile(path.join(staticFilesUrl, "index.html"));
-});
-
 app.post("/api/register", registerHandler);
 
 async function registerHandler(req, res) {
@@ -199,3 +195,7 @@ async function getMessagesFromTable(tableName) {
     })
     .catch((e) => false);
 }
+
+app.get("*", function (req, res) {
+  res.sendfile(path.join(staticFilesUrl, "index.html"));
+});

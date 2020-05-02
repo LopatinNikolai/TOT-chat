@@ -1,3 +1,4 @@
+const http = require("http");
 const { Client } = require("pg");
 var bodyParser = require("body-parser");
 const path = require("path");
@@ -6,12 +7,13 @@ const express = require("express");
 
 const WebSocket = require("ws");
 const app = express();
+const httpServer = http.createServer(app);
 const connectionString =
   "postgres://unavejsb:NSoWq1fWupJYQMktk9nBLi5PDTEVe9sL@balarama.db.elephantsql.com:5432/unavejsb";
 const clientPg = new Client(connectionString);
 clientPg.connect();
 
-const connection = new WebSocket.Server({ port: 8003 });
+const connection = new WebSocket.Server({ server:httpServer });
 
 connection.on("connection", (ws) => {
   ws.on("message", (message) => {
@@ -27,7 +29,7 @@ connection.on("connection", (ws) => {
 
 const staticFilesUrl = path.join(__dirname, "../build");
 
-app.listen(Number(process.env.PORT)|| 8002);
+httpServer.listen(Number(process.env.PORT)|| 8002);
 
 app.use(bodyParser.json());
 app.use(express.static(staticFilesUrl));

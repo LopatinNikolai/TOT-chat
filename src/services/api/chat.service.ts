@@ -52,6 +52,7 @@ export class ChatService {
   }
 
   public static setConnection(){
-    ChatService.webSocket = new WebSocket("ws://localhost:8003");
+    const host =window.location.origin.replace(/^http/,"ws");
+    ChatService.webSocket = new WebSocket(host);
   }
 }

@@ -1,0 +1,27 @@
+.header{
+    width: 100%;
+    background-color: gray;
+}
+.header-content{
+    margin: auto;
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6vh;
+}
+.logo{
+    display: flex;
+    font-size: 30px;
+}
+.tot{
+    color: white;
+}
+.chat{
+    color: #ffff33;
+}
+.link,.link:hover{
+    text-decoration: none;
+    color: inherit;
+    font-weight: inherit;
+  }

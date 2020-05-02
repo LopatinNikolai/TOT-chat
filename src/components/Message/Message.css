@@ -1,0 +1,25 @@
+.right{
+    width: 100%;
+    display: flex;
+    justify-content:flex-end;
+}
+.left{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+.contaner-message{
+    max-width: 80%;
+
+    border-radius: 8px;
+    background-color: rgb(226, 225, 225) ;
+    padding: 1vw;
+    margin: 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start ;
+    
+}
+.user{
+    font-weight: bold;
+}

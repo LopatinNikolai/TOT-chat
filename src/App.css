@@ -1,0 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.switch{
+  margin: auto;
+  width: 60%;
+  height: 94vh;
+  display: flex;
+}

@@ -1,0 +1,17 @@
+
+.textarea{
+    margin-left: 1vw;
+    padding: 1vw;
+    resize: none;
+    width: 80%;
+    border: 2px solid gray;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+
+}
+.message-input{
+    display: flex;
+    padding-bottom: 3vh;
+    height: 10%;
+}

@@ -1,0 +1,16 @@
+.chat-container {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.messages {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 5%;
+}
+.messages-wrapper {
+  height: 85%;
+  overflow: auto;
+}

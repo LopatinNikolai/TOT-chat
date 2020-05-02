@@ -1,0 +1,16 @@
+.container_chats-nav {
+  border-right: 2px solid gray;
+  width: 20%;
+  display: flex;
+  justify-content: flex-start;
+}
+.li-chat {
+  padding: 10px;
+  border-bottom: 2px solid gray;
+  user-select: none;
+  list-style-type: none;
+}
+.container-chats {
+  width: 100%;
+  display: flex;
+}

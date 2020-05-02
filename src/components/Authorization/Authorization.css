@@ -1,0 +1,41 @@
+.popup {
+    height: 500px;
+    width: 500px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:0 auto;
+  }
+  .login_details {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+  }
+  .logpas {
+    font-family: Exo 2;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(51, 51, 51, 0.51);
+    margin-bottom: 55px;
+  }
+  .logpas > input {
+    outline: none !important;
+    border: none;
+    margin-left: 10px;
+  }
+  .logpas::after {
+    margin-top: 5px;
+    content: "";
+    display: block;
+    border: 0.5px solid gray;
+    width: 350px;
+  }
+  .registration-errors{
+    display: flex;
+    justify-content: center;
+    color: red;
+    margin-bottom: 20px;
+  }

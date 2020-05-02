@@ -32,7 +32,6 @@ export class AuthService {
   public static registerUser(
     registerData: TRegistrationData
   ): Promise<TAuthResponse> {
-    //@ts-ignore
     return axios
       .post(AuthService.REGISTER_ROUTE, registerData)
       .then(({ data }) => {

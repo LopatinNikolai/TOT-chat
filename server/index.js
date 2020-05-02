@@ -41,8 +41,10 @@ async function registerHandler(req, res) {
   if (!(await isUserLoginExist(login))) {
     try {
       const response = await registerUser(login, password, name, surname);
+      
       if (response.rows.length === 0) {
-        res.send({ status: "ok" });
+        const data = await checkLogPass(login, password);
+        res.send(data);
       } else {
         res.send({ status: "error", message: "я не знаю почему" });
       }
@@ -52,7 +54,6 @@ async function registerHandler(req, res) {
   } else {
     res.send({ status: "error", message: "логин занят" });
   }
-  res.send(res.rows);
 }
 
 async function isUserLoginExist(login) {
@@ -76,15 +77,8 @@ app.post("/api/auth", authHandler);
 async function authHandler(req, res) {
   const { login, password } = req.body;
   const responseFromDB = await checkLogPass(login, password);
-  if (responseFromDB.status) {
-    res.send({
-      status: "ok",
-      userData: {
-        userId: responseFromDB.data.USER_ID,
-        name: responseFromDB.data.NAME,
-        surname: responseFromDB.data.SURNAME,
-      },
-    });
+  if (responseFromDB.status === 'ok') {
+    res.send(responseFromDB);
   } else {
     res.send({ status: "error", message: "неверный логин или пароль" });
   }
@@ -94,10 +88,15 @@ async function checkLogPass(login, password) {
   const queryString = `SELECT * FROM "public"."Users" where "public"."Users"."LOGIN" = '${login}' AND "public"."Users"."PASSWORD" = '${password}' `;
   return clientPg
     .query(queryString)
-    .then((res) => ({
-      status: Boolean(res.rows.length),
-      data: res.rows[0],
-    }))
+    .then((res) => {
+      const status = Boolean(res.rows.length) ? 'ok' : 'error';
+      
+      return {
+        status,
+        userData: status === 'ok' ? { userId: res.rows[0].USER_ID, name: res.rows[0].NAME, surname: res.rows[0].SURNAME } : null
+      }
+    }
+    )
     .catch((e) => false);
 }
 

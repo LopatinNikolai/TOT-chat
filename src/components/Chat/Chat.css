@@ -14,3 +14,9 @@
   height: 85%;
   overflow: auto;
 }
+
+@media (max-width: 767px) {
+  .chat-container {
+    width: 100%;
+  }
+}

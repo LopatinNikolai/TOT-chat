@@ -5,18 +5,16 @@ import { RouteChildrenProps } from "react-router-dom";
 import { Chat } from "../Chat/Chat";
 import { TUserDataFromServer } from "../../services/api/auth.service";
 
-type TChatListProps = RouteChildrenProps & { userData:TUserDataFromServer };
+type TChatListProps = RouteChildrenProps & { userData: TUserDataFromServer };
 
 export const ChatList: React.FC<TChatListProps> = (props) => {
   const [currentChatId, setChatId] = React.useState<string | null>(null);
   const [chatList, setChatList] = React.useState<Array<TChatInfo>>([]);
-  
+
   React.useEffect(() => {
     ChatService.getChatsList().then(setChatList);
 
-    return () => {
-      console.log('her')
-    }
+    return () => {};
   }, []);
 
   function handleClick(
@@ -37,7 +35,9 @@ export const ChatList: React.FC<TChatListProps> = (props) => {
           </ul>
         </nav>
       </div>
-      {currentChatId && <Chat userData = {props.userData} chatId={currentChatId} />}
+      {currentChatId && (
+        <Chat userData={props.userData} chatId={currentChatId} />
+      )}
     </div>
   );
 };

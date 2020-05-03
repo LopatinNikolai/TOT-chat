@@ -24,8 +24,10 @@ export const Header: React.FC<HeaderProps> = ({ onLogOut, userData }) => {
 
   const headerContent =
     userData !== null ? (
-      <div>
-        <span>{userData.name} {userData.surname}</span>
+      <div className="header-nav">
+        <span>
+          {userData.name} {userData.surname}
+        </span>
         <Button onClick={onClickExit}>
           <Link className="link" to={paths.AUTHORIZATION}>
             выход
@@ -33,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({ onLogOut, userData }) => {
         </Button>
       </div>
     ) : (
-      <div>
+      <div className="header-nav">
         <Button>
           <Link className="link" to={paths.REGISTRATION}>
             регистрация

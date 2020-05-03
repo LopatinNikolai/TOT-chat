@@ -13,8 +13,8 @@ onSend
   const [textAreaValue,setTextAreaValue]=React.useState("");
 
   function handleClick() {
-    if (textAreaValue){
-        onSend(textAreaValue);
+    if (textAreaValue.trim()){
+        onSend(textAreaValue.trim());
     }
     setTextAreaValue("");
   }

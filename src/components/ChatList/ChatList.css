@@ -28,5 +28,6 @@
   .container-chats {
     width: 100%;
     flex-direction: column;
+    margin-top: 70px;
   }
 }

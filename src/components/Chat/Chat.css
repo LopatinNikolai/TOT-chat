@@ -19,4 +19,8 @@
   .chat-container {
     width: 100%;
   }
+  .messages-wrapper{
+    height: 100%;
+    margin-bottom: 70px;
+  }
 }
